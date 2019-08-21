@@ -1,4 +1,4 @@
-package bean;
+package Bean;
 
 /**
  * @author nsu_zk
