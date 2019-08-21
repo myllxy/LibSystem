@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Lib-book/Lib-book.iml" filepath="$PROJECT_DIR$/Lib-book/Lib-book.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lib-common/Lib-common.iml" filepath="$PROJECT_DIR$/Lib-common/Lib-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lib-userinterface/Lib-userinterface.iml" filepath="$PROJECT_DIR$/Lib-userinterface/Lib-userinterface.iml" />
       <module fileurl="file://$PROJECT_DIR$/LibSystem.iml" filepath="$PROJECT_DIR$/LibSystem.iml" />
     </modules>
   </component>

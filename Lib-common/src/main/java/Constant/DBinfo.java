@@ -1,6 +1,6 @@
 package Constant;
 
-import bean.Val;
+import Bean.Val;
 
 /**
  * @author nsu_zk
@@ -14,11 +14,10 @@ public enum DBinfo implements Val {
         this.name = name;
     }
 
-    @Override
     public void setName(String name) {
         this.name = name;
     }
-    @Override
+
     public String getName() {
         return name;
     }
