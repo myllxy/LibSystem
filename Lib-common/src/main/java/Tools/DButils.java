@@ -1,11 +1,9 @@
 package Tools;
 
 import Constant.DBinfo;
+import org.junit.Test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * @author nsu_zk
@@ -16,8 +14,12 @@ public class DButils {
     static String pwd = DBinfo.PWD.getName();
     static String url = DBinfo.URL.getName();
     private static Statement stmt;
+    private static PreparedStatement prestmt;
     private static Connection con;
-
+//@Test
+//public void test(){
+//    System.out.println(DBinfo.USER.getName());
+//}
 
     /**
      * 获取连接对象
@@ -28,7 +30,7 @@ public class DButils {
         if (con == null) {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection(user, pwd, url);
+                con = DriverManager.getConnection(url, user, pwd);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
@@ -40,6 +42,7 @@ public class DButils {
 
     /**
      * 获取状态对象
+     *
      * @return
      */
     public static Statement getStmt() {
@@ -52,6 +55,23 @@ public class DButils {
             e.printStackTrace();
         }
         return stmt;
+    }
+
+    /**
+     * 获取预编译sql状态对象
+     * @param sql
+     * @return
+     */
+    public static PreparedStatement getpreStmt(String sql) {
+        if (con == null) {
+            con = getCon();
+        }
+        try {
+            prestmt = con.prepareStatement(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return prestmt;
     }
 
     public static void main(String[] args) {

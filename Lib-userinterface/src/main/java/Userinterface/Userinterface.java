@@ -1,12 +1,14 @@
 package Userinterface;
 
 import Bean.Pagefunction;
+import Constant.SqlUserinterface;
 import Tools.DButils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -43,6 +45,7 @@ public class Userinterface extends JFrame implements Pagefunction {
         addcomponentto();
         init();
     }
+
     @Override
     public void newcomponent() {
         labTitle = new JLabel("图书管理系统");
@@ -57,6 +60,7 @@ public class Userinterface extends JFrame implements Pagefunction {
         jpfPWD = new JPasswordField();
         panMain = new JPanel();
     }
+
     @Override
     public void init() {
         btnSure1.addActionListener(new ActionListener() {
@@ -81,30 +85,35 @@ public class Userinterface extends JFrame implements Pagefunction {
         });
         btnSure.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Statement stmt = DButils.getStmt();
+                PreparedStatement preparedStatement_ad = DButils.getpreStmt(SqlUserinterface.ADMINISTRATORSQL.getName());
+                PreparedStatement preparedStatement_st = DButils.getpreStmt(SqlUserinterface.STUDENTSQL.getName());
                 ID = jtfLoginName.getText();// 用户名
-                pwd = new String(jpfPWD.getPassword()).trim();// 密码
-                String Administratorsql = "select * from Administrator where StudentId='"
-                        + ID + "'AND Password='" + pwd + "';";
-                String Studentsql = "select * from Student where StudentId='"
-                        + ID + "'AND Password='" + pwd + "';";
+                pwd = new String(jpfPWD.getPassword());// 密码
+//                String Administratorsql = "select * from Administrator where StudentId='"
+//                        + ID + "'AND Password='" + pwd + "';";
+//                String Studentsql = "select * from Student where StudentId='"
+//                        + ID + "'AND Password='" + pwd + "';";
                 try {
-                    ResultSet rs = stmt.executeQuery(Administratorsql);
+                    preparedStatement_ad.setString(1, ID);
+                    preparedStatement_ad.setString(2, pwd);
+                    preparedStatement_st.setString(1, ID);
+                    preparedStatement_st.setString(2, pwd);
+                    ResultSet resultSet_ad = preparedStatement_ad.executeQuery();
+                    ResultSet resultSet_st = preparedStatement_st.executeQuery();
                     if ("".equals(ID) || "".equals(pwd)) {
                         JOptionPane.showMessageDialog(null, "賬號和密码不能为空", "提示",
                                 JOptionPane.ERROR_MESSAGE);
-                    } else if (rs.next()) {
+                    } else if (resultSet_ad.next()) {
                         JOptionPane.showMessageDialog(null, "管理员登录成功", "提示",
                                 JOptionPane.INFORMATION_MESSAGE);
 //                        new Administrator().setVisible(true);
                     } else {
                         try {
-                            ResultSet rs1 = stmt.executeQuery(Studentsql);
                             if ("".equals(ID) || "".equals(pwd)) {
                                 JOptionPane.showMessageDialog(null,
                                         "賬號和密码不能为空", "提示",
                                         JOptionPane.ERROR_MESSAGE);
-                            } else if (rs1.next()) {
+                            } else if (resultSet_st.next()) {
                                 JOptionPane.showMessageDialog(null, "学生登录成功",
                                         "提示", JOptionPane.INFORMATION_MESSAGE);
 //                                new Student().setVisible(true);
