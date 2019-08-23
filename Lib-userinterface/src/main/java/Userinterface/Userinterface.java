@@ -18,26 +18,26 @@ import java.sql.Statement;
  * @create 2019-08-21 13:43
  */
 public class Userinterface extends JFrame implements Pagefunction {
-    private JLabel labTitle; // ±êÌâ
-    private Font Titlefont; // ±êÌâ×ÖÌå
-    private Font Optionsfont; // ²Ù×÷Ñ¡Ïî×ÖÌå
-    private JButton btnSure; // µÇÂ¼¼ü°´Å¥
-    private JButton btnSure1; // ×¢²á¼ü°´Å¥
-    private JPanel panBtn; // ·ÅÖÃ°´Å¥×é¼şµÄJPanel
+    private JLabel labTitle; // æ ‡é¢˜
+    private Font Titlefont; // æ ‡é¢˜å­—ä½“
+    private Font Optionsfont; // æ“ä½œé€‰é¡¹å­—ä½“
+    private JButton btnSure; // ç™»å½•é”®æŒ‰é’®
+    private JButton btnSure1; // æ³¨å†Œé”®æŒ‰é’®
+    private JPanel panBtn; // æ”¾ç½®æŒ‰é’®ç»„ä»¶çš„JPanel
 
-    private JLabel labLoginName; // µÇÂ¼Ãû
-    private JLabel labPWD; // µÇÂ¼ÃÜÂë
-    public static JTextField jtfLoginName; // µÇÂ¼ÃûÓò
-    public static JPasswordField jpfPWD; // µÇÂ¼ÃÜÂëÓò
+    private JLabel labLoginName; // ç™»å½•å
+    private JLabel labPWD; // ç™»å½•å¯†ç 
+    public static JTextField jtfLoginName; // ç™»å½•ååŸŸ
+    public static JPasswordField jpfPWD; // ç™»å½•å¯†ç åŸŸ
     public static String ID;
     public static String pwd;
-    private JPanel panMain; // ·ÅÖÃJLabel¡¢JTextField¡¢JPasswordField×é¼şµÄJPanel
+    private JPanel panMain; // æ”¾ç½®JLabelã€JTextFieldã€JPasswordFieldç»„ä»¶çš„JPanel
 
     public Userinterface() {
         setTitle("Userinterface");
         setSize(550, 330);
-        // ÉèÖÃ´°¿ÚÏà¶ÔÓÚÖ¸¶¨×é¼şµÄÎ»ÖÃ¡£
-        // Èç¹û×é¼şµ±Ç°Î´ÏÔÊ¾»òÕßÎª null£¬Ôò´Ë´°¿Ú½«ÖÃÓÚÆÁÄ»µÄÖĞÑë¡£
+        // è®¾ç½®çª—å£ç›¸å¯¹äºæŒ‡å®šç»„ä»¶çš„ä½ç½®ã€‚
+        // å¦‚æœç»„ä»¶å½“å‰æœªæ˜¾ç¤ºæˆ–è€…ä¸º nullï¼Œåˆ™æ­¤çª—å£å°†ç½®äºå±å¹•çš„ä¸­å¤®ã€‚
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         newcomponent();
@@ -48,14 +48,14 @@ public class Userinterface extends JFrame implements Pagefunction {
 
     @Override
     public void newcomponent() {
-        labTitle = new JLabel("Í¼Êé¹ÜÀíÏµÍ³");
-        Titlefont = new Font("Á¥Êé", Font.BOLD, 40);
+        labTitle = new JLabel("å›¾ä¹¦ç®¡ç†ç³»ç»Ÿ");
+        Titlefont = new Font("éš¶ä¹¦", Font.BOLD, 40);
         Optionsfont = new Font("TimesRoman", Font.BOLD, 15);
-        btnSure = new JButton("µÇÂ¼");
-        btnSure1 = new JButton("×¢²á");
+        btnSure = new JButton("ç™»å½•");
+        btnSure1 = new JButton("æ³¨å†Œ");
         panBtn = new JPanel();
-        labLoginName = new JLabel("ÕËºÅ:");
-        labPWD = new JLabel("ÃÜÂë:");
+        labLoginName = new JLabel("è´¦å·:");
+        labPWD = new JLabel("å¯†ç :");
         jtfLoginName = new JTextField();
         jpfPWD = new JPasswordField();
         panMain = new JPanel();
@@ -67,18 +67,18 @@ public class Userinterface extends JFrame implements Pagefunction {
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
                 Statement stmt = DButils.getStmt();
-                ID = jtfLoginName.getText();// ÓÃ»§Ãû
+                ID = jtfLoginName.getText();// ç”¨æˆ·å
                 pwd = new String(jpfPWD.getPassword()).trim();
                 String Studentsql = "insert into student values('" + ID + "','"
                         + pwd + "','0','0')";
                 try {
                     stmt.executeUpdate(Studentsql);
-                    JOptionPane.showMessageDialog(null, "Ñ§Éú×¢²á³É¹¦", "ÌáÊ¾",
+                    JOptionPane.showMessageDialog(null, "å­¦ç”Ÿæ³¨å†ŒæˆåŠŸ", "æç¤º",
                             JOptionPane.INFORMATION_MESSAGE);
                     refresh();
                 } catch (SQLException e1) {
                     // TODO Auto-generated catch block
-                    JOptionPane.showMessageDialog(null, "´ËÓÃ»§ÒÑ´æÔÚ", "ÌáÊ¾",
+                    JOptionPane.showMessageDialog(null, "æ­¤ç”¨æˆ·å·²å­˜åœ¨", "æç¤º",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -87,8 +87,8 @@ public class Userinterface extends JFrame implements Pagefunction {
             public void actionPerformed(ActionEvent e) {
                 PreparedStatement preparedStatement_ad = DButils.getpreStmt(SqlUserinterface.ADMINISTRATORSQL.getName());
                 PreparedStatement preparedStatement_st = DButils.getpreStmt(SqlUserinterface.STUDENTSQL.getName());
-                ID = jtfLoginName.getText();// ÓÃ»§Ãû
-                pwd = new String(jpfPWD.getPassword());// ÃÜÂë
+                ID = jtfLoginName.getText();// ç”¨æˆ·å
+                pwd = new String(jpfPWD.getPassword());// å¯†ç 
 //                String Administratorsql = "select * from Administrator where StudentId='"
 //                        + ID + "'AND Password='" + pwd + "';";
 //                String Studentsql = "select * from Student where StudentId='"
@@ -101,25 +101,25 @@ public class Userinterface extends JFrame implements Pagefunction {
                     ResultSet resultSet_ad = preparedStatement_ad.executeQuery();
                     ResultSet resultSet_st = preparedStatement_st.executeQuery();
                     if ("".equals(ID) || "".equals(pwd)) {
-                        JOptionPane.showMessageDialog(null, "Ù~Ì–ºÍÃÜÂë²»ÄÜÎª¿Õ", "ÌáÊ¾",
+                        JOptionPane.showMessageDialog(null, "è³¬è™Ÿå’Œå¯†ç ä¸èƒ½ä¸ºç©º", "æç¤º",
                                 JOptionPane.ERROR_MESSAGE);
                     } else if (resultSet_ad.next()) {
-                        JOptionPane.showMessageDialog(null, "¹ÜÀíÔ±µÇÂ¼³É¹¦", "ÌáÊ¾",
+                        JOptionPane.showMessageDialog(null, "ç®¡ç†å‘˜ç™»å½•æˆåŠŸ", "æç¤º",
                                 JOptionPane.INFORMATION_MESSAGE);
 //                        new Administrator().setVisible(true);
                     } else {
                         try {
                             if ("".equals(ID) || "".equals(pwd)) {
                                 JOptionPane.showMessageDialog(null,
-                                        "Ù~Ì–ºÍÃÜÂë²»ÄÜÎª¿Õ", "ÌáÊ¾",
+                                        "è³¬è™Ÿå’Œå¯†ç ä¸èƒ½ä¸ºç©º", "æç¤º",
                                         JOptionPane.ERROR_MESSAGE);
                             } else if (resultSet_st.next()) {
-                                JOptionPane.showMessageDialog(null, "Ñ§ÉúµÇÂ¼³É¹¦",
-                                        "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "å­¦ç”Ÿç™»å½•æˆåŠŸ",
+                                        "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 //                                new Student().setVisible(true);
                             } else {
                                 int n = JOptionPane.showConfirmDialog(null,
-                                        "²»´æÔÚ´ËÕËºÅ", "ÌáÊ¾",
+                                        "ä¸å­˜åœ¨æ­¤è´¦å·", "æç¤º",
                                         JOptionPane.INFORMATION_MESSAGE);
                                 if (n == 0) {
                                     refresh();
@@ -143,7 +143,7 @@ public class Userinterface extends JFrame implements Pagefunction {
     }
 
     /**
-     * Çå¿ÕjtfLoginName¡¢jpfPWDÓòµÄÊı¾İ
+     * æ¸…ç©ºjtfLoginNameã€jpfPWDåŸŸçš„æ•°æ®
      */
     @Override
     public void refresh() {
@@ -155,15 +155,15 @@ public class Userinterface extends JFrame implements Pagefunction {
     public void setcomponent() {
         labTitle.setFont(Titlefont);
         labTitle.setHorizontalAlignment(JLabel.CENTER);
-        // ÉèÖÃ±êÇ©ÄÚÈİÑØ X ÖáµÄ¶ÔÆë·½Ê½¡£
+        // è®¾ç½®æ ‡ç­¾å†…å®¹æ²¿ X è½´çš„å¯¹é½æ–¹å¼ã€‚
         labTitle.setForeground(Color.RED);
         labTitle.setOpaque(true);
         labTitle.setBackground(Color.gray);
-        labLoginName.setSize(100, 40);// ÓÃ»§Ãû
+        labLoginName.setSize(100, 40);// ç”¨æˆ·å
         labLoginName.setFont(Optionsfont);
         labLoginName.setLocation(55, 50);
         labLoginName.setHorizontalAlignment(JLabel.RIGHT);
-        labPWD.setSize(100, 40);// ÃÜÂë
+        labPWD.setSize(100, 40);// å¯†ç 
         labPWD.setFont(Optionsfont);
         labPWD.setLocation(55, 50 + 40 + 10);
         labPWD.setHorizontalAlignment(JLabel.RIGHT);
@@ -179,19 +179,19 @@ public class Userinterface extends JFrame implements Pagefunction {
 
     @Override
     public void addcomponentto() {
-        // Ìí¼Ó×é¼şµ½panBtn
+        // æ·»åŠ ç»„ä»¶åˆ°panBtn
         panBtn.add(btnSure);
         panBtn.add(btnSure1);
 
-        // Ìí¼Ó×é¼şµ½panMain
+        // æ·»åŠ ç»„ä»¶åˆ°panMain
         panMain.add(labLoginName);
         panMain.add(labPWD);
         panMain.add(jtfLoginName);
         panMain.add(jpfPWD);
 
-        add(labTitle, BorderLayout.NORTH);// ½«labTitle·ÅÔÚÈ«¾Ö½çÃæÉÏ·½
-        add(panBtn, BorderLayout.SOUTH); // ½«panBtn·ÅÔÚÈ«¾Ö½çÃæÏÂ·½
-        add(panMain, BorderLayout.CENTER);// ½«panMain·ÅÔÚÈ«¾Ö½çÃæÖĞ¼ä
+        add(labTitle, BorderLayout.NORTH);// å°†labTitleæ”¾åœ¨å…¨å±€ç•Œé¢ä¸Šæ–¹
+        add(panBtn, BorderLayout.SOUTH); // å°†panBtnæ”¾åœ¨å…¨å±€ç•Œé¢ä¸‹æ–¹
+        add(panMain, BorderLayout.CENTER);// å°†panMainæ”¾åœ¨å…¨å±€ç•Œé¢ä¸­é—´
     }
 
     public static void main(String[] args) {

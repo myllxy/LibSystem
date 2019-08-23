@@ -22,7 +22,7 @@ public class DButils {
 //}
 
     /**
-     * »ñÈ¡Á¬½Ó¶ÔÏó
+     * è·å–è¿æ¥å¯¹è±¡
      *
      * @return
      */
@@ -41,7 +41,7 @@ public class DButils {
     }
 
     /**
-     * »ñÈ¡×´Ì¬¶ÔÏó
+     * è·å–çŠ¶æ€å¯¹è±¡
      *
      * @return
      */
@@ -58,7 +58,7 @@ public class DButils {
     }
 
     /**
-     * »ñÈ¡Ô¤±àÒësql×´Ì¬¶ÔÏó
+     * è·å–é¢„ç¼–è¯‘sqlçŠ¶æ€å¯¹è±¡
      * @param sql
      * @return
      */

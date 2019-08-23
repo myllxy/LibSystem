@@ -1,34 +1,34 @@
 package Bean;
 
 /**
- * Ã¿¸öÒ³ÃæµÄ»ù´¡¹¦ÄÜ
+ * æ¯ä¸ªé¡µé¢çš„åŸºç¡€åŠŸèƒ½
  *
  * @author nsu_zk
  * @create 2019-08-21 13:52
  */
 public interface Pagefunction {
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     public void init();
 
     /**
-     * Ë¢ĞÂ
+     * åˆ·æ–°
      */
     public void refresh();
 
     /**
-     * ×é¼ş³õÊ¼»¯
+     * ç»„ä»¶åˆå§‹åŒ–
      */
     public void newcomponent();
 
     /**
-     * ÉèÖÃ×é¼ş
+     * è®¾ç½®ç»„ä»¶
      */
     public void setcomponent();
 
     /**
-     * Ìí¼Ó×é¼şµ½
+     * æ·»åŠ ç»„ä»¶åˆ°
      */
     public void addcomponentto();
 }

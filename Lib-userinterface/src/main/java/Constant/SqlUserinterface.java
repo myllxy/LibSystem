@@ -3,7 +3,7 @@ package Constant;
 import Bean.Val;
 
 /**
- * Userinterface½çÃæµÄÔ¤±àÒësql
+ * Userinterfaceç•Œé¢çš„é¢„ç¼–è¯‘sql
  *
  * @author nsu_zk
  * @create 2019-08-23 20:55
