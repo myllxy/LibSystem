@@ -85,6 +85,7 @@ public class Userinterface extends JFrame implements Pagefunction {
         });
         btnSure.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // 获得两个sql的预编译PreparedStatement
                 PreparedStatement preparedStatement_ad = DButils.getpreStmt(SqlUserinterface.ADMINISTRATORSQL.getName());
                 PreparedStatement preparedStatement_st = DButils.getpreStmt(SqlUserinterface.STUDENTSQL.getName());
                 ID = jtfLoginName.getText();// 用户名
@@ -103,9 +104,12 @@ public class Userinterface extends JFrame implements Pagefunction {
                     if ("".equals(ID) || "".equals(pwd)) {
                         JOptionPane.showMessageDialog(null, "賬號和密码不能为空", "提示",
                                 JOptionPane.ERROR_MESSAGE);
-                    } else if (resultSet_ad.next()) {
+                    }
+                    // 在resultSet_ad找到如输入对应的值，证明是管理员账号
+                    else if (resultSet_ad.next()) {
                         JOptionPane.showMessageDialog(null, "管理员登录成功", "提示",
                                 JOptionPane.INFORMATION_MESSAGE);
+                          // 跳转到管理员账户界面
 //                        new Administrator().setVisible(true);
                     } else {
                         try {
@@ -113,7 +117,9 @@ public class Userinterface extends JFrame implements Pagefunction {
                                 JOptionPane.showMessageDialog(null,
                                         "賬號和密码不能为空", "提示",
                                         JOptionPane.ERROR_MESSAGE);
-                            } else if (resultSet_st.next()) {
+                            }
+                            // 在resultSet_st找到如输入对应的值，证明是学生账号
+                            else if (resultSet_st.next()) {
                                 JOptionPane.showMessageDialog(null, "学生登录成功",
                                         "提示", JOptionPane.INFORMATION_MESSAGE);
 //                                new Student().setVisible(true);
