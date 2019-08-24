@@ -16,10 +16,7 @@ public class DButils {
     private static Statement stmt;
     private static PreparedStatement prestmt;
     private static Connection con;
-//@Test
-//public void test(){
-//    System.out.println(DBinfo.USER.getName());
-//}
+
 
     /**
      * 获取连接对象
