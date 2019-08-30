@@ -3,6 +3,7 @@ package Userinterface;
 import Aministrator.Administrator;
 import Bean.Pagefunction;
 import Constant.SqlUserinterface;
+import Student.Student;
 import Tools.DButils;
 
 import javax.swing.*;
@@ -110,7 +111,7 @@ public class Userinterface extends JFrame implements Pagefunction {
                     else if (resultSet_ad.next()) {
                         JOptionPane.showMessageDialog(null, "管理员登录成功", "提示",
                                 JOptionPane.INFORMATION_MESSAGE);
-                          // 跳转到管理员账户界面
+                        // 跳转到管理员账户界面
                         new Administrator().setVisible(true);
                     } else {
                         try {
@@ -124,8 +125,8 @@ public class Userinterface extends JFrame implements Pagefunction {
                                 JOptionPane.showMessageDialog(null, "学生登录成功",
                                         "提示", JOptionPane.INFORMATION_MESSAGE);
 
-                                  // 跳转到普通用户界面
-//                                new Student().setVisible(true);
+                                // 跳转到普通用户界面
+                                new Student().setVisible(true);
                             } else {
                                 int n = JOptionPane.showConfirmDialog(null,
                                         "不存在此账号", "提示",
@@ -205,7 +206,6 @@ public class Userinterface extends JFrame implements Pagefunction {
 
     public static void main(String[] args) {
         Userinterface userinterface = new Userinterface();
-        userinterface.init();
         userinterface.setVisible(true);
     }
 }
