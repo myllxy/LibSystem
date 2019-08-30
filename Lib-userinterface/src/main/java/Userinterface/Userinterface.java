@@ -1,5 +1,6 @@
 package Userinterface;
 
+import Aministrator.Administrator;
 import Bean.Pagefunction;
 import Constant.SqlUserinterface;
 import Tools.DButils;
@@ -110,7 +111,7 @@ public class Userinterface extends JFrame implements Pagefunction {
                         JOptionPane.showMessageDialog(null, "管理员登录成功", "提示",
                                 JOptionPane.INFORMATION_MESSAGE);
                           // 跳转到管理员账户界面
-//                        new Administrator().setVisible(true);
+                        new Administrator().setVisible(true);
                     } else {
                         try {
                             if ("".equals(ID) || "".equals(pwd)) {
@@ -122,6 +123,8 @@ public class Userinterface extends JFrame implements Pagefunction {
                             else if (resultSet_st.next()) {
                                 JOptionPane.showMessageDialog(null, "学生登录成功",
                                         "提示", JOptionPane.INFORMATION_MESSAGE);
+
+                                  // 跳转到普通用户界面
 //                                new Student().setVisible(true);
                             } else {
                                 int n = JOptionPane.showConfirmDialog(null,
