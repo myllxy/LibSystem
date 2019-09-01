@@ -126,7 +126,7 @@ public class Userinterface extends JFrame implements Pagefunction {
                                         "提示", JOptionPane.INFORMATION_MESSAGE);
 
                                 // 跳转到普通用户界面
-                                new Student().setVisible(true);
+                                new Student(ID).setVisible(true);
                             } else {
                                 int n = JOptionPane.showConfirmDialog(null,
                                         "不存在此账号", "提示",
