@@ -19,10 +19,12 @@ public class Student extends JFrame implements Pagefunction {
     private JButton btn1;
     private JButton btn2;
     private JButton btn3;
+    private String ID;
 
     private JPanel panbtn; // 放置button的主JPanel
 
-    public Student() {
+    public Student(String ID) {
+        this.ID = ID;
         setTitle("Student"); // 设置标题
         setSize(500, 380);
         setLocationRelativeTo(null);
@@ -54,7 +56,7 @@ public class Student extends JFrame implements Pagefunction {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new Studentinformation().setVisible(true);
+                new Studentinformation(ID).setVisible(true);
             }
         });
     }
