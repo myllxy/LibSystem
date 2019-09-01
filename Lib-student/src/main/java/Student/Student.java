@@ -1,6 +1,7 @@
 package Student;
 
 import Bean.Pagefunction;
+import Tools.Changepwd;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +13,7 @@ import java.awt.event.ActionListener;
  * @create 2019-08-30 20:37
  */
 public class Student extends JFrame implements Pagefunction {
+    private static final String STUDENT = "student";
     private static final long serialVersionUID = 1L;
     private JLabel labTitle; // 设置标签
     private Font Titlefont; // 设置标题字体
@@ -41,7 +43,7 @@ public class Student extends JFrame implements Pagefunction {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new Changepwd("student").setVisible(true);
+                new Changepwd(STUDENT).setVisible(true);
 
             }
         });
@@ -49,7 +51,7 @@ public class Student extends JFrame implements Pagefunction {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new Search().setVisible(true);
+                new Search(ID).setVisible(true);
             }
         });
         btn3.addActionListener(new ActionListener() {

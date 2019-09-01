@@ -1,5 +1,6 @@
 package Student;
 
+import Bean.Modelfunction;
 import Bean.Pagefunction;
 import Constant.SqlStudent;
 import Tools.DButils;
@@ -67,7 +68,7 @@ public class Studentinformation extends JFrame implements Pagefunction {
     }
 }
 
-class MyModel extends AbstractTableModel {
+class MyModel extends AbstractTableModel implements Modelfunction {
     /**
      *
      */
@@ -83,19 +84,7 @@ class MyModel extends AbstractTableModel {
 
     public MyModel(String ID) {
         this.ID = ID;
-        preparedStatement = DButils.getpreStmt(sql);
-        try {
-            preparedStatement.setString(1, ID);
-            rs = preparedStatement.executeQuery();
-            rs.last();
-            Studentinformation.row = rs.getRow();
-            ResultSetMetaData rsmd = rs.getMetaData();
-            // 使用 rsmd 查找 rs 有多少列
-            column = rsmd.getColumnCount();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        execute();
     }
 
     @Override
@@ -128,4 +117,20 @@ class MyModel extends AbstractTableModel {
         return value;
     }
 
+    @Override
+    public void execute() {
+        preparedStatement = DButils.getpreStmt(sql);
+        try {
+            preparedStatement.setString(1, ID);
+            rs = preparedStatement.executeQuery();
+            rs.last();
+            Studentinformation.row = rs.getRow();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            // 使用 rsmd 查找 rs 有多少列
+            column = rsmd.getColumnCount();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
