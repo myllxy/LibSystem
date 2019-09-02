@@ -1,6 +1,10 @@
 package Aministrator;
 
 import Bean.Pagefunction;
+import Book.BookJTable;
+import Book.Stackroom;
+import Borrowinformation.BorrowRecordJTable;
+import Tools.Changepwd;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,14 +48,14 @@ public class Administrator extends JFrame implements Pagefunction {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new BookJTable().setVisible(true);
+                new BookJTable().setVisible(true);
             }
         });
         btn2.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new Changepwd("administrator").setVisible(true);
+                new Changepwd("administrator").setVisible(true);
 
             }
         });
@@ -59,7 +63,7 @@ public class Administrator extends JFrame implements Pagefunction {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new BorrowRecordJTable().setVisible(true);
+                new BorrowRecordJTable().setVisible(true);
 
             }
         });
@@ -67,7 +71,7 @@ public class Administrator extends JFrame implements Pagefunction {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new Stackroom().setVisible(true);
+                new Stackroom().setVisible(true);
 
             }
         });
