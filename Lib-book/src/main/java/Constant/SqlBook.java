@@ -1,6 +1,7 @@
 package Constant;
 
 import Bean.Val;
+import Book.BookJTable;
 
 /**
  * @author nsu_zk
@@ -8,8 +9,13 @@ import Bean.Val;
  */
 public enum SqlBook implements Val {
     SELECT("select number,stackroom from book where bookname=?;"),
-    INSERT("insert into borrowinformation values(?,?,?,?,'1') "),
-    UPDATE("update student set Totallend = Totallend + 1,Notreturned = Notreturned + 1 where StudentId=?;");
+    UPDATE("update student set Totallend = Totallend + 1,Notreturned = Notreturned + 1 where StudentId=?;"),
+    INSERT_BOOK("insert into book values(?,'','');"),
+    SELECT_BOOK("select * from book;"),
+    DELECT_BOOK("delete from book where number=?"),
+    UPDATE_BOOK_BOOKNAME("update book set bookname=? where bookname=? and number =?;"),
+    UPDATE_BOOK_STACKROOM("update book set stackroom=? where stackroom=? and number =?;")
+    ;
     private String sql;
 
     SqlBook(String sql) {
