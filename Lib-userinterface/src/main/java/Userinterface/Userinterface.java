@@ -73,23 +73,30 @@ public class Userinterface extends JFrame implements Pagefunction {
                 PreparedStatement stmt = DButils.getpreStmt(SqlUserinterface.INSERTSQL.getName());
                 ID = jtfLoginName.getText();// 用户名
                 pwd = new String(jpfPWD.getPassword()).trim();
-                String Studentsql = "insert into student values('" + ID + "','"
-                        + pwd + "','0','0')";
                 try {
-                    stmt.setString(1, ID);
-                    stmt.setString(2, pwd);
-                } catch (SQLException e1) {
+                    PreparedStatement stmt1 = DButils.getpreStmt(SqlUserinterface.STUDENTSQL2.getName());
+                    stmt1.setString(1, ID);
+                    ResultSet resultSet = stmt1.executeQuery();
+                    // 检测要注册的账户时候存在
+                    if (!resultSet.next()) {
+                        try {
+                            stmt.setString(1, ID);
+                            stmt.setString(2, pwd);
+                            stmt.execute();
+                            JOptionPane.showMessageDialog(null, "学生注册成功", "提示",
+                                    JOptionPane.INFORMATION_MESSAGE);
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        }
+                    } else {
+                        // 存在则打印用户已经存在
+                        JOptionPane.showMessageDialog(null, "此用户已存在", "提示",
+                                JOptionPane.ERROR_MESSAGE);
+                        refresh();
+                    }
+
+                } catch (Exception e1) {
                     e1.printStackTrace();
-                }
-                try {
-                    stmt.executeUpdate(Studentsql);
-                    JOptionPane.showMessageDialog(null, "学生注册成功", "提示",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    refresh();
-                } catch (SQLException e1) {
-                    // TODO Auto-generated catch block
-                    JOptionPane.showMessageDialog(null, "此用户已存在", "提示",
-                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

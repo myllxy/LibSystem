@@ -11,6 +11,7 @@ import Bean.Val;
 public enum SqlUserinterface implements Val {
     ADMINISTRATORSQL("select * from Administrator where StudentId=? AND Password=?;"),
     STUDENTSQL("select * from Student where StudentId=? AND Password=?;"),
+    STUDENTSQL2("select * from Student where StudentId=?;"),
     INSERTSQL("insert into student values(?,?,'0','0');");
 
     SqlUserinterface(String sql) {
