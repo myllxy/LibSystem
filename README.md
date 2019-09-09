@@ -23,4 +23,9 @@
 
 ![avatar](https://github.com/myllxy/pictrueforblog/blob/master/QQ%E6%B5%8F%E8%A7%88%E5%99%A8%E6%88%AA%E5%9B%BE20190902191122.png?raw=true)
 
+:fire: 借阅之后在用户信息栏
+
+![avatar](https://github.com/myllxy/pictrueforblog/blob/master/lll.png?raw=true)
+
 and so on
+
