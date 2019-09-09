@@ -55,7 +55,7 @@ public class BookJTable extends JFrame implements Pagefunction {
                 String getnumber = table.getValueAt(Selectrow, 0).toString();
                 int getnumber_1 = Integer.parseInt(getnumber) + 1;
                 // "insert into book values(?,'','');"
-                PreparedStatement preparedStatement = DButils.getpreStmt(SqlBook.INSERT_BOOK.getName());
+                PreparedStatement preparedStatement = DButils.getpreStmt(SqlBook.INSERT_BOOK_1.getName());
                 try {
                     if (table.getRowCount() == Selectrow + 1) {
                         JOptionPane.showMessageDialog(null, "请使用Addrow添加新行",
@@ -98,7 +98,7 @@ public class BookJTable extends JFrame implements Pagefunction {
                         .toString()) + 1;
                 try {
                     // INSERT_BOOK("insert into book values(?,'','');")
-                    preparedStatement = DButils.getpreStmt(SqlBook.INSERT_BOOK.getName());
+                    preparedStatement = DButils.getpreStmt(SqlBook.INSERT_BOOK_1.getName());
                     preparedStatement.setInt(1, rowcount);
                     preparedStatement.executeUpdate();
                 } catch (SQLException e1) {
@@ -167,7 +167,7 @@ public class BookJTable extends JFrame implements Pagefunction {
                                         "提示", JOptionPane.ERROR_MESSAGE);
                             } else {
                                 // DELECT_BOOK("delete from book where number=?")
-                                PreparedStatement stmt_1 = DButils.getpreStmt(SqlBook.DELECT_BOOK.getName());
+                                PreparedStatement stmt_1 = DButils.getpreStmt(SqlBook.DELECT_BOOK_1.getName());
                                 // UPDATE_STACKROOM("update stackroom set Bookamount=Bookamount-1 where Stackroomnumber=?")
                                 PreparedStatement stmt_2 = DButils.getpreStmt(SqlStackrom.UPDATE_STACKROOM.getName());
                                 try {
