@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * @author nsu_zk
@@ -65,14 +64,23 @@ public class Userinterface extends JFrame implements Pagefunction {
 
     @Override
     public void init() {
+        /**
+         * 实现学生注册
+         */
         btnSure1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                Statement stmt = DButils.getStmt();
+                PreparedStatement stmt = DButils.getpreStmt(SqlUserinterface.INSERTSQL.getName());
                 ID = jtfLoginName.getText();// 用户名
                 pwd = new String(jpfPWD.getPassword()).trim();
                 String Studentsql = "insert into student values('" + ID + "','"
                         + pwd + "','0','0')";
+                try {
+                    stmt.setString(1, ID);
+                    stmt.setString(2, pwd);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
                 try {
                     stmt.executeUpdate(Studentsql);
                     JOptionPane.showMessageDialog(null, "学生注册成功", "提示",
@@ -85,6 +93,9 @@ public class Userinterface extends JFrame implements Pagefunction {
                 }
             }
         });
+        /*
+        实现学生和管理员的登录
+         */
         btnSure.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 获得两个sql的预编译PreparedStatement
