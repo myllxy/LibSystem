@@ -5,6 +5,7 @@ import Bean.Pagefunction;
 import Constant.SqlBook;
 import Constant.SqlStackrom;
 import Tools.DButils;
+import Tools.RSutils;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -339,11 +340,9 @@ class MyModel extends AbstractTableModel implements Modelfunction {
     public void execute() {
         preparedStatement = DButils.getpreStmt(SqlBook.SELECT_BOOK.getName());
         try {
-            rs = preparedStatement.executeQuery();
-            rs.last();
-            row = rs.getRow();
-            ResultSetMetaData rsmd = rs.getMetaData();
-            column = rsmd.getColumnCount();
+            int[] ints = RSutils.getColumnCount(preparedStatement, preparedStatement.executeQuery());
+            row = ints[0];
+            column = ints[1];
         } catch (SQLException e) {
             e.printStackTrace();
         }
