@@ -4,6 +4,7 @@ import Bean.Modelfunction;
 import Bean.Pagefunction;
 import Constant.SqlStackrom;
 import Tools.DButils;
+import Tools.RSutils;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -66,7 +67,7 @@ class MyModel_1 extends AbstractTableModel implements Modelfunction {
      */
     private static final long serialVersionUID = 1L;
     static String[] n = {"Stackroomnumber", "Bookamount"};
-    private PreparedStatement stmt;
+    private PreparedStatement preparedStatement;
     private ResultSet rs;
     static int row;
     static int column;
@@ -97,8 +98,8 @@ class MyModel_1 extends AbstractTableModel implements Modelfunction {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Object value = null;
         try {
-            stmt = DButils.getpreStmt(sql);
-            rs = stmt.executeQuery();
+            preparedStatement = DButils.getpreStmt(sql);
+            rs = preparedStatement.executeQuery();
             rs.absolute(rowIndex + 1);
             value = rs.getString(columnIndex + 1);
         } catch (SQLException e) {
@@ -109,13 +110,11 @@ class MyModel_1 extends AbstractTableModel implements Modelfunction {
 
     @Override
     public void execute() {
-        PreparedStatement stmt = DButils.getpreStmt(sql);
+        preparedStatement = DButils.getpreStmt(sql);
         try {
-            rs = stmt.executeQuery();
-            rs.last();
-            row = rs.getRow();
-            ResultSetMetaData rsmd = rs.getMetaData();
-            column = rsmd.getColumnCount();
+            int[] ints = RSutils.getColumnCount(preparedStatement, preparedStatement.executeQuery());
+            row = ints[0];
+            column = ints[1];
         } catch (SQLException e) {
             e.printStackTrace();
         }
